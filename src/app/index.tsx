@@ -1,7 +1,7 @@
 import {ScrollView, View, FlatList, StyleSheet} from 'react-native';
 import products from '../../assets/data/products';
 import React from 'react';
-import { ProductListItem } from '../../src/components/ProductListItem'
+import { ProductListItem } from '../components/ProductListItem'
 
 export default function TabOneScreen () {
   return(
