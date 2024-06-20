@@ -63,11 +63,11 @@ function RootLayoutNav() {
             <NotificationProvider>
               <CartProvider> */}
                 <Stack >
-                  {/* <Stack.Screen
-                    name="(admin)"
+                  <Stack.Screen
+                    name="(tabs)"
                     options={{ headerShown: false }}
                   />
-                  <Stack.Screen
+                  {/* <Stack.Screen
                     name="(user)"
                     options={{ headerShown: false }}
                   />
@@ -78,11 +78,11 @@ function RootLayoutNav() {
                   <Stack.Screen
                     name="cart"
                     options={{ presentation: 'modal' }}
-                  /> */}
+                  />
                   <Stack.Screen
                     name="product"
                     
-                  />
+                  /> */}
                 </Stack>
               {/* </CartProvider>
             </NotificationProvider>
