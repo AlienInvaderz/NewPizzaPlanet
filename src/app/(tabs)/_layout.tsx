@@ -1,44 +1,31 @@
-import FontAwesome from '@expo/vector-icons/FontAwesome';
-import { Link, Redirect, Tabs } from 'expo-router';
-import { Pressable, useColorScheme } from 'react-native';
+import React from "react";
+import { Tabs } from "expo-router";
+import { FontAwesome } from "@expo/vector-icons";
+import Colors from "../../constants/Colors";
 
-import Colors from '../../constants/Colors';
-// import { useAuth } from '../../providers/AuthProvider';
-
-/**
- * You can explore the built-in icon families and icons on the web at https://icons.expo.fyi/
- */
-function TabBarIcon(props: {
-  name: React.ComponentProps<typeof FontAwesome>['name'];
-  color: string;
-}) {
-  return <FontAwesome size={20} style={{ marginBottom: -3 }} {...props} />;
-}
-
-export default function TabLayout() {
-//   const { isAdmin } = useAuth();
-
-//   if (!isAdmin) {
-//     return <Redirect href={'/'} />;
-//   }
+export default function Layout() {
+  function TabBarIcon(props: {
+    name: React.ComponentProps<typeof FontAwesome>["name"];
+    color: string;
+  }) {
+    return <FontAwesome size={20} style={{ marginBottom: -3 }} {...props} />;
+  }
 
   return (
     <Tabs
       screenOptions={{
         tabBarActiveTintColor: Colors.light.background,
-        tabBarInactiveTintColor: 'gainsboro',
+        tabBarInactiveTintColor: "gainsboro",
         tabBarStyle: {
           backgroundColor: Colors.light.tint,
         },
       }}
     >
-      {/* <Tabs.Screen name="index" options={{ href: null }} /> */}
-
       <Tabs.Screen
-        name="menu"
+        name="index"
         options={{
-          title: 'Menu',
-          headerShown: false,
+          title: "Menu",
+          headerShown: true,
           tabBarIcon: ({ color }) => (
             <TabBarIcon name="cutlery" color={color} />
           ),
@@ -47,9 +34,15 @@ export default function TabLayout() {
       <Tabs.Screen
         name="orders"
         options={{
-          title: 'Orders',
-          headerShown: false,
+          title: "Orders",
+          headerShown: true,
           tabBarIcon: ({ color }) => <TabBarIcon name="list" color={color} />,
+        }}
+      />
+      <Tabs.Screen
+        name="[id]"
+        options={{
+          tabBarButton: () => null,
         }}
       />
     </Tabs>
