@@ -22,15 +22,16 @@ export default function Layout() {
       }}
     >
       <Tabs.Screen
-        name="index"
+        name="menu"
         options={{
           title: "Menu",
-          headerShown: true,
+          headerShown: false,
           tabBarIcon: ({ color }) => (
             <TabBarIcon name="cutlery" color={color} />
           ),
         }}
       />
+
       <Tabs.Screen
         name="orders"
         options={{
@@ -39,12 +40,8 @@ export default function Layout() {
           tabBarIcon: ({ color }) => <TabBarIcon name="list" color={color} />,
         }}
       />
-      <Tabs.Screen
-        name="[id]"
-        options={{
-          tabBarButton: () => null,
-        }}
-      />
+
+      <Tabs.Screen name="index" options={{ href: null }} />
     </Tabs>
   );
 }
