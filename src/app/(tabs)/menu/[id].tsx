@@ -1,19 +1,47 @@
 import React from "react";
 import { Stack, useLocalSearchParams } from "expo-router";
-import { View, Text } from "react-native";
+import { ScrollView, Image, Text, StyleSheet } from "react-native";
+import products from "../../../../assets/data/products";
 
 const ProductDetailsScreen = () => {
   const { id } = useLocalSearchParams();
 
-  return (
-    <View>
-      <Stack.Screen options={{ title: `Details: ${id}` }} />
+  const product = products.find((p) => p.id.toString() === id);
 
-      <Text style={{ fontSize: 20 }}>ProductDetailsScreen for id: {id}</Text>
-    </View>
+  if (!product) {
+    return <Text>Product not found</Text>;
+  }
+
+  return (
+    <ScrollView style={styles.container}>
+      <Stack.Screen options={{ title: product.name }} />
+      <Image source={{ uri: product.image }} style={styles.image} />
+
+      <Text style={{ fontSize: 20 }}>${product.price}</Text>
+    </ScrollView>
   );
 };
 
+const styles = StyleSheet.create({
+  container: {
+    backgroundColor: "white",
+    flex: 1,
+    padding: 10,
+  },
+  image: {
+    width: "20%",
+    aspectRatio: 1,
+  },
+  title: {
+    fontSize: 20,
+    fontWeight: "bold",
+    marginVertical: 10,
+  },
+  price: {
+    fontSize: 18,
+    fontWeight: "500",
+  },
+});
 export default ProductDetailsScreen;
 
 // import { Link, Stack, useLocalSearchParams, useRouter } from 'expo-router';
@@ -99,26 +127,3 @@ export default ProductDetailsScreen;
 //     </View>
 //   );
 // };
-
-// const styles = StyleSheet.create({
-//   container: {
-//     backgroundColor: 'white',
-//     flex: 1,
-//     padding: 10,
-//   },
-//   image: {
-//     width: '100%',
-//     aspectRatio: 1,
-//   },
-//   title: {
-//     fontSize: 20,
-//     fontWeight: 'bold',
-//     marginVertical: 10,
-//   },
-//   price: {
-//     fontSize: 18,
-//     fontWeight: '500',
-//   },
-// });
-
-// export default ProductDetailsScreen;
