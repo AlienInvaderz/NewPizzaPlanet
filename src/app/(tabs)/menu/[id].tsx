@@ -1,24 +1,47 @@
-import React from "react";
+import React, { useState } from "react";
+import { View, Image, Text, StyleSheet } from "react-native";
 import { Stack, useLocalSearchParams } from "expo-router";
-import { ScrollView, Image, Text, StyleSheet } from "react-native";
 import products from "../../../../assets/data/products";
+
+const sizes = ["S", "M", "L", "XL"];
 
 const ProductDetailsScreen = () => {
   const { id } = useLocalSearchParams();
 
+  const [pickedSize, setPickedSize] = useState(sizes[0]);
+
   const product = products.find((p) => p.id.toString() === id);
+
+  //   const { id: idString } = useLocalSearchParams();
+  //   const id = parseFloat(typeof idString === 'string' ? idString : idString[0]);
+  //   const { data: product, error, isLoading } = useProduct(id);
 
   if (!product) {
     return <Text>Product not found</Text>;
   }
 
   return (
-    <ScrollView style={styles.container}>
+    <View style={styles.container}>
       <Stack.Screen options={{ title: product.name }} />
       <Image source={{ uri: product.image }} style={styles.image} />
 
+      <Text>Select size</Text>
+      <View style={styles.sizes}>
+        {sizes.map((size) => (
+          <View
+            style={[
+              styles.size,
+              { backgroundColor: pickedSize === size ? "gainsboro" : "white" },
+            ]}
+            key={size}
+          >
+            <Text style={[styles.sizeText, { color: pickedSize === size ? "red" : "black" }]}>{size}</Text>
+          </View>
+        ))}
+      </View>
+
       <Text style={{ fontSize: 20 }}>${product.price}</Text>
-    </ScrollView>
+    </View>
   );
 };
 
@@ -28,8 +51,25 @@ const styles = StyleSheet.create({
     flex: 1,
     padding: 10,
   },
+  sizes: {
+    flexDirection: "row",
+    justifyContent: "space-around",
+    marginVertical: 10,
+  },
+  size: {
+    backgroundColor: "gainsboro",
+    width: 50,
+    aspectRatio: 1,
+    borderRadius: 25,
+    alignItems: "center",
+    justifyContent: "center",
+  },
+  sizeText: {
+    fontSize: 20,
+    fontWeight: "500",
+  },
   image: {
-    width: "20%",
+    width: "100%",
     aspectRatio: 1,
   },
   title: {
