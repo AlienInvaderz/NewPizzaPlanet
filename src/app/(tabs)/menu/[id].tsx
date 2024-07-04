@@ -14,7 +14,7 @@ const ProductDetailsScreen = () => {
   const product = products.find((p) => p.id.toString() === id);
 
   const addToCart = () => {
-    console.warn(`Adding to cart ${pickedSize} ${product?.name}`);
+    console.warn(`Adding to cart, size: `, pickedSize);
     //   if (!product) {
     //     return;
     //   }
@@ -97,6 +97,7 @@ const styles = StyleSheet.create({
   price: {
     fontSize: 18,
     fontWeight: "500",
+    marginTop: 'auto'
   },
 });
 export default ProductDetailsScreen;

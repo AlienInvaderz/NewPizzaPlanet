@@ -1,7 +1,8 @@
 import React from "react";
-import { Tabs } from "expo-router";
+import { Link, Tabs } from "expo-router";
 import { FontAwesome } from "@expo/vector-icons";
 import Colors from "../../constants/Colors";
+import { Pressable } from "react-native";
 
 export default function Layout() {
   function TabBarIcon(props: {
@@ -29,9 +30,23 @@ export default function Layout() {
           tabBarIcon: ({ color }) => (
             <TabBarIcon name="cutlery" color={color} />
           ),
+          headerRight: () => (
+            <Link href="/modal" asChild>
+              <Pressable>
+                {({ pressed }) => (
+                  <FontAwesome
+                    name="info-circle"
+                    size={25}
+                    color={Colors.light.text}
+                    // color={Colors[colorScheme ?? "light"].text}
+                    style={{ marginRight: 15, opacity: pressed ? 0 : 1 }}
+                  />
+                )}
+              </Pressable>
+            </Link>
+          ),
         }}
       />
-
       <Tabs.Screen
         name="orders"
         options={{
