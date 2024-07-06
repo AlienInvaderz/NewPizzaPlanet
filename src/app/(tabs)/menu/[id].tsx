@@ -1,8 +1,10 @@
 import React, { useState } from "react";
 import { View, Pressable, Image, Text, StyleSheet } from "react-native";
 import { Stack, useLocalSearchParams } from "expo-router";
-import products from "../../../../assets/data/products";
-import Button from "../../../components/Button";
+import products from "~/assets/data/products";
+import Button from "~/src/components/Button";
+// import products from "../../../../assets/data/products";
+// import Button from "../../../components/Button";
 
 const sizes = ["S", "M", "L", "XL"];
 
@@ -97,7 +99,7 @@ const styles = StyleSheet.create({
   price: {
     fontSize: 18,
     fontWeight: "500",
-    marginTop: 'auto'
+    marginTop: "auto",
   },
 });
 export default ProductDetailsScreen;

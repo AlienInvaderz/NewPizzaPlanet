@@ -1,8 +1,8 @@
 import React from "react";
+import { Pressable } from "react-native";
 import { Link, Tabs } from "expo-router";
 import { FontAwesome } from "@expo/vector-icons";
-import Colors from "../../constants/Colors";
-import { Pressable } from "react-native";
+import Colors from "~/src/constants/Colors";
 
 export default function Layout() {
   function TabBarIcon(props: {
